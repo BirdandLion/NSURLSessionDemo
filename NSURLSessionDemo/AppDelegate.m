@@ -151,6 +151,7 @@ typedef void(^CompletionHandlerType)();
     [self.downloadTask resume];
 }
 
+#pragma mark - 暂停下载
 - (void)pauseDownload {
     __weak __typeof(self) wSelf = self;
     [self.downloadTask cancelByProducingResumeData:^(NSData * resumeData) {
@@ -159,6 +160,7 @@ typedef void(^CompletionHandlerType)();
     }];
 }
 
+#pragma mark - 恢复下载
 - (void)continueDownload {
     if (self.resumeData) {
         if (IS_IOS10ORLATER) {
